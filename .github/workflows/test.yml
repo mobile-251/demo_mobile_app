@@ -27,12 +27,11 @@ jobs:
       - name: Run tests
         run: npm test -- --ci --coverage --maxWorkers=2
 
-      - name: Generate coverage badge
-        uses: cicirello/jacoco-badge-generator@v2
+      - name: Generate coverage badges
+        uses: jpb06/coverage-badges-action@latest
         with:
-          badges-directory: badges
-          generate-branches-badge: true
-          generate-summary: true
+          coverage-summary-path: ./coverage/coverage-summary.json
+          branches: main,develop
 
       - name: Upload coverage reports
         uses: actions/upload-artifact@v4
